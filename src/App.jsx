@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
+import Dashboard from './components/Dashboard';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import StockInsights from './components/StockInsights';
+
 // import './App.css'
 
 function App() {
@@ -8,7 +12,12 @@ function App() {
 
   return (
     <>
-      <div className='text-red-500'>Hello world</div>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Dashboard />} />
+          <Route path='/stock/:ticker' element={<StockInsights />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
