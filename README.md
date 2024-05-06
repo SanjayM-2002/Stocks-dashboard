@@ -16,6 +16,8 @@ npm i
 ```bash
 npm run dev
 ```
+## Live Demo:
+[Live link]: (https://stocks-dashboard-delta.vercel.app/)
 
 ## Note: 
 * API for getting list of 25 stocks: [Yahoo Finance api] (https://rapidapi.com/sparior/api/yahoo-finance15)
