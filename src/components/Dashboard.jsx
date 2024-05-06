@@ -3,12 +3,18 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchStockListData } from '../redux/features/stock/stockListSlice';
 import { Oval } from 'react-loader-spinner';
 import { useNavigate } from 'react-router-dom';
+import { selectStock } from '../redux/features/stock/stockNameSlice';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
   const stocksList = useSelector((state) => state.stockList.stocksList);
   const status = useSelector((state) => state.stockList.status);
   const navigate = useNavigate();
+
+  const onClickStock = (stk) => {
+    dispatch(selectStock(stk.name));
+    navigate(`/stock/${stk.symbol}`);
+  };
 
   useEffect(() => {
     dispatch(fetchStockListData());
@@ -50,7 +56,7 @@ const Dashboard = () => {
                   <td className='border px-4 py-2'>
                     <button
                       className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
-                      onClick={() => navigate(`/stock/${stock.symbol}`)}
+                      onClick={() => onClickStock(stock)}
                     >
                       Click Here
                     </button>

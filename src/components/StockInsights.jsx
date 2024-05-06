@@ -19,6 +19,9 @@ const StockInsights = () => {
   const dispatch = useDispatch();
   const insights = useSelector((state) => state.currentStock.insights);
   const status = useSelector((state) => state.currentStock.status);
+  const stockName = useSelector((state) => state.stockName.stockName);
+  console.log(insights);
+  console.log('stock name is: ', stockName);
 
   useEffect(() => {
     dispatch(fetchStockInsights(ticker));
@@ -43,7 +46,9 @@ const StockInsights = () => {
         )}
         {status === 'succeeded' && (
           <div>
-            <h2 className='text-xl font-bold my-2'>Insights for {ticker}</h2>
+            <h2 className='text-xl font-bold my-2'>
+              Insights for {ticker}: {stockName}
+            </h2>
 
             <Chart
               chartType='CandlestickChart'
