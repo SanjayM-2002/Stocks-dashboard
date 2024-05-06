@@ -10,7 +10,7 @@ const Dashboard = () => {
   const stocksList = useSelector((state) => state.stockList.stocksList);
   const status = useSelector((state) => state.stockList.status);
   const navigate = useNavigate();
-  console.log(stocksList);
+  // console.log(stocksList);
 
   const onClickStock = (stk) => {
     dispatch(selectStock(stk));

@@ -20,8 +20,8 @@ const StockInsights = () => {
   const insights = useSelector((state) => state.currentStock.insights);
   const status = useSelector((state) => state.currentStock.status);
   const stockDetails = useSelector((state) => state.stockName.stockDetails);
-  console.log(insights);
-  console.log('stock name is: ', stockDetails.name);
+  // console.log(insights);
+  // console.log('stock name is: ', stockDetails.name);
 
   useEffect(() => {
     dispatch(fetchStockInsights(ticker));
@@ -67,7 +67,7 @@ const StockInsights = () => {
             </h3>
 
             <h3 className='font-bold my-2 text-lg'>
-              Percent Change: {stockDetails.pctchange} %
+              Percent Change: {stockDetails.pctchange}
             </h3>
 
             <div className='p-8 justify-center align-middle'>
