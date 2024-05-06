@@ -19,9 +19,9 @@ const StockInsights = () => {
   const dispatch = useDispatch();
   const insights = useSelector((state) => state.currentStock.insights);
   const status = useSelector((state) => state.currentStock.status);
-  const stockName = useSelector((state) => state.stockName.stockName);
+  const stockDetails = useSelector((state) => state.stockName.stockDetails);
   console.log(insights);
-  console.log('stock name is: ', stockName);
+  console.log('stock name is: ', stockDetails.name);
 
   useEffect(() => {
     dispatch(fetchStockInsights(ticker));
@@ -29,7 +29,7 @@ const StockInsights = () => {
 
   return (
     <>
-      <div className='container mx-auto'>
+      <div className='container mx-auto bg-slate-200 px-4 py-4'>
         <h1 className='text-2xl font-bold my-4'>Stock Insights</h1>
         {status === 'loading' && (
           <div className='flex justify-center align-middle p-2'>
@@ -47,16 +47,38 @@ const StockInsights = () => {
         {status === 'succeeded' && (
           <div>
             <h2 className='text-xl font-bold my-2'>
-              Insights for {ticker}: {stockName}
+              Stock Name: {stockDetails.name}
             </h2>
 
-            <Chart
-              chartType='CandlestickChart'
-              width='100%'
-              height='400px'
-              data={prepareChartData(insights)}
-              options={options}
-            />
+            <h3 className='font-bold my-2 text-lg'>
+              Symbol: {stockDetails.symbol}
+            </h3>
+
+            <h3 className='font-bold my-2 text-lg'>
+              Last sale: {stockDetails.lastsale} USD
+            </h3>
+
+            <h3 className='font-bold my-2 text-lg'>
+              Market cap: {stockDetails.marketCap} USD
+            </h3>
+
+            <h3 className='font-bold my-2 text-lg'>
+              Net Change: {stockDetails.netchange} USD
+            </h3>
+
+            <h3 className='font-bold my-2 text-lg'>
+              Percent Change: {stockDetails.pctchange} %
+            </h3>
+
+            <div className='p-8 justify-center align-middle'>
+              <Chart
+                chartType='CandlestickChart'
+                width='100%'
+                height='400px'
+                data={prepareChartData(insights)}
+                options={options}
+              />
+            </div>
           </div>
         )}
         {status === 'failed' && (

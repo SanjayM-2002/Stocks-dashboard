@@ -3,11 +3,11 @@ import { createSlice } from '@reduxjs/toolkit';
 const stockNameSlice = createSlice({
   name: 'stockNameSlice',
   initialState: {
-    stockName: '',
+    stockDetails: {},
   },
   reducers: {
     selectStock: (state, action) => {
-      state.stockName = action.payload;
+      state.stockDetails = action.payload;
     },
   },
 });
